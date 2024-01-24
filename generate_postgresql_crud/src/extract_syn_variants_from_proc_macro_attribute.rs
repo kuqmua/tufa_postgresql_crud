@@ -8,8 +8,7 @@ pub fn extract_syn_variants_from_proc_macro_attribute(
         proc_macro2::TokenStream,
         std::vec::Vec::<syn::Variant>
 )> {
-    println!("proc_macro_name_snake_case {proc_macro_name_snake_case}");
-    let additional_http_status_codes_error_variant_path = format!("{proc_macro_name_snake_case}::{proc_macro_attribute_name}");//format!("{proc_macro_name_snake_case}::{proc_macro_attribute_name}")
+    let additional_http_status_codes_error_variant_path = format!("{proc_macro_name_snake_case}::{proc_macro_attribute_name}");
     let additional_http_status_codes_error_variants_attribute = proc_macro_helpers::get_macro_attribute::get_macro_attribute(
         &ast.attrs,
         &additional_http_status_codes_error_variant_path,
