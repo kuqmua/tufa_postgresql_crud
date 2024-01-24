@@ -1,5 +1,5 @@
 [package]
-name = "rust_binary_template"
+name = "tufa_postgresql_crud"
 version = "0.1.0"
 edition = "2021"
 
