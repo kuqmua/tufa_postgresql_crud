@@ -1936,11 +1936,11 @@ pub fn generate_postgresql_crud(input: proc_macro::TokenStream) -> proc_macro::T
             .unwrap_or_else(|| {
                 panic!("{proc_macro_name_upper_camel_case_ident_stringified} element.ident is None")
             });
-        let not_unique_field_vec_pascal_stringified = generate_not_unique_field_vec_pascal_stringified(&field_ident);
+        let not_unique_field_vec_upper_camel_stringified = generate_not_unique_field_vec_upper_camel_stringified(&field_ident);
         let not_unique_field_vec_snake_case_stringified = generate_not_unique_field_vec_snake_case_stringified(&field_ident);
         acc.push(crate::type_variants_from_request_response_generator::construct_syn_variant(
             proc_macro_helpers::status_code::StatusCode::Tvfrr400BadRequest,
-            &not_unique_field_vec_pascal_stringified,
+            &not_unique_field_vec_upper_camel_stringified,
             &code_occurence_field,
             vec![
                 (
@@ -3937,10 +3937,10 @@ pub fn generate_postgresql_crud(input: proc_macro::TokenStream) -> proc_macro::T
                             not_unique_field_vec_snake_case_stringified.parse::<proc_macro2::TokenStream>()
                             .unwrap_or_else(|_| panic!("{proc_macro_name_upper_camel_case_ident_stringified} {not_unique_field_vec_snake_case_stringified} {}", proc_macro_common::global_variables::hardcode::PARSE_PROC_MACRO2_TOKEN_STREAM_FAILED_MESSAGE))
                         };
-                        let not_unique_field_vec_vec_pascal_token_stream = {
-                            let not_unique_field_vec_pascal_stringified = generate_not_unique_field_vec_pascal_stringified(&field_ident);
-                            not_unique_field_vec_pascal_stringified.parse::<proc_macro2::TokenStream>()
-                            .unwrap_or_else(|_| panic!("{proc_macro_name_upper_camel_case_ident_stringified} {not_unique_field_vec_pascal_stringified} {}", proc_macro_common::global_variables::hardcode::PARSE_PROC_MACRO2_TOKEN_STREAM_FAILED_MESSAGE))
+                        let not_unique_field_vec_vec_upper_camel_token_stream = {
+                            let not_unique_field_vec_upper_camel_stringified = generate_not_unique_field_vec_upper_camel_stringified(&field_ident);
+                            not_unique_field_vec_upper_camel_stringified.parse::<proc_macro2::TokenStream>()
+                            .unwrap_or_else(|_| panic!("{proc_macro_name_upper_camel_case_ident_stringified} {not_unique_field_vec_upper_camel_stringified} {}", proc_macro_common::global_variables::hardcode::PARSE_PROC_MACRO2_TOKEN_STREAM_FAILED_MESSAGE))
                         };
                         quote::quote!{
                             let #field_handle_token_stream = match #parameters_snake_case_token_stream.#payload_snake_case_token_stream.#field_ident {
@@ -3979,7 +3979,7 @@ pub fn generate_postgresql_crud(input: proc_macro::TokenStream) -> proc_macro::T
                                                 }
                                                 #not_unique_field_vec_snake_case_token_stream
                                             };
-                                            let error = #try_operation_upper_camel_case_token_stream::#not_unique_field_vec_vec_pascal_token_stream {
+                                            let error = #try_operation_upper_camel_case_token_stream::#not_unique_field_vec_vec_upper_camel_token_stream {
                                                 #not_unique_field_vec_snake_case_token_stream,
                                                 #code_occurence_snake_case_crate_code_occurence_tufa_common_macro_call_token_stream,
                                             };
@@ -6490,10 +6490,10 @@ pub fn generate_postgresql_crud(input: proc_macro::TokenStream) -> proc_macro::T
                                 not_unique_field_vec_snake_case_stringified.parse::<proc_macro2::TokenStream>()
                                 .unwrap_or_else(|_| panic!("{proc_macro_name_upper_camel_case_ident_stringified} {not_unique_field_vec_snake_case_stringified} {}", proc_macro_common::global_variables::hardcode::PARSE_PROC_MACRO2_TOKEN_STREAM_FAILED_MESSAGE))
                             };
-                            let not_unique_field_vec_vec_pascal_token_stream = {
-                                let not_unique_field_vec_pascal_stringified = generate_not_unique_field_vec_pascal_stringified(&field_ident);
-                                not_unique_field_vec_pascal_stringified.parse::<proc_macro2::TokenStream>()
-                                .unwrap_or_else(|_| panic!("{proc_macro_name_upper_camel_case_ident_stringified} {not_unique_field_vec_pascal_stringified} {}", proc_macro_common::global_variables::hardcode::PARSE_PROC_MACRO2_TOKEN_STREAM_FAILED_MESSAGE))
+                            let not_unique_field_vec_vec_upper_camel_token_stream = {
+                                let not_unique_field_vec_upper_camel_stringified = generate_not_unique_field_vec_upper_camel_stringified(&field_ident);
+                                not_unique_field_vec_upper_camel_stringified.parse::<proc_macro2::TokenStream>()
+                                .unwrap_or_else(|_| panic!("{proc_macro_name_upper_camel_case_ident_stringified} {not_unique_field_vec_upper_camel_stringified} {}", proc_macro_common::global_variables::hardcode::PARSE_PROC_MACRO2_TOKEN_STREAM_FAILED_MESSAGE))
                             };
                             quote::quote!{
                                 let #field_handle_token_stream = match #parameters_snake_case_token_stream.#payload_snake_case_token_stream.#field_ident {
@@ -6532,7 +6532,7 @@ pub fn generate_postgresql_crud(input: proc_macro::TokenStream) -> proc_macro::T
                                                     }
                                                     #not_unique_field_vec_snake_case_token_stream
                                                 };
-                                                let error = #try_operation_upper_camel_case_token_stream::#not_unique_field_vec_vec_pascal_token_stream {
+                                                let error = #try_operation_upper_camel_case_token_stream::#not_unique_field_vec_vec_upper_camel_token_stream {
                                                     #not_unique_field_vec_snake_case_token_stream,
                                                     #code_occurence_snake_case_crate_code_occurence_tufa_common_macro_call_token_stream,
                                                 };
@@ -8280,11 +8280,11 @@ fn generate_common_middlewares_error_syn_variants_from_impls(
     quote::quote!{#(#value)*}
 }
 
-fn generate_not_unique_field_vec_pascal_stringified(field_ident: &syn::Ident) -> std::string::String {
+fn generate_not_unique_field_vec_upper_camel_stringified(field_ident: &syn::Ident) -> std::string::String {
     format!("NotUnique{}Vec",
         {
             use convert_case::Casing;
-            field_ident.to_string().to_case(convert_case::Case::Pascal)
+            field_ident.to_string().to_case(convert_case::Case::UpperCamel)
         }
     )
 }
