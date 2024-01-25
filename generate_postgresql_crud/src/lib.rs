@@ -255,7 +255,7 @@ pub fn generate_postgresql_crud(input: proc_macro::TokenStream) -> proc_macro::T
     };
     let primary_key_field_type = &primary_key_field.ty;
     // println!("{primary_key_field:#?}");
-    let sqlx_types_uuid_stringified = "sqlx::types::Uuid";
+    let sqlx_types_uuid_stringified = proc_macro_helpers::naming_conventions::SQLX_TYPES_UUID_STRINGIFIED;
     let sqlx_types_uuid_token_stream = {
         sqlx_types_uuid_stringified.parse::<proc_macro2::TokenStream>()
         .unwrap_or_else(|_| panic!("{proc_macro_name_upper_camel_case_ident_stringified} {sqlx_types_uuid_stringified} {}", proc_macro_common::global_variables::hardcode::PARSE_PROC_MACRO2_TOKEN_STREAM_FAILED_MESSAGE))
@@ -348,8 +348,8 @@ pub fn generate_postgresql_crud(input: proc_macro::TokenStream) -> proc_macro::T
     let derive_debug_to_schema_token_stream = quote::quote!{#[derive(#debug_token_stream, #utoipa_to_schema_token_stream)]};
     let derive_debug_serialize_deserialize_token_stream = quote::quote!{#[derive(#debug_token_stream, #serde_serialize_token_stream, #serde_deserialize_token_stream)]};
     let derive_debug_serialize_deserialize_to_schema_token_stream = quote::quote!{#[derive(#debug_token_stream, #serde_serialize_token_stream, #serde_deserialize_token_stream, #utoipa_to_schema_token_stream)]};
-    let try_upper_camel_case_stringified = "Try";
-    let from_upper_camel_case_stringified = "From";
+    let try_upper_camel_case_stringified = proc_macro_helpers::naming_conventions::try_upper_camel_case_stringified();
+    let from_upper_camel_case_stringified = proc_macro_helpers::naming_conventions::from_upper_camel_case_stringified();
     let try_from_upper_camel_case_stringified = format!("{try_upper_camel_case_stringified}{from_upper_camel_case_stringified}");
     let from_str_upper_camel_case_stringified = format!("{from_upper_camel_case_stringified}Str");
     let from_str_upper_camel_case_token_stream = {
