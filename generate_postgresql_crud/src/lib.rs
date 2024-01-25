@@ -348,8 +348,6 @@ pub fn generate_postgresql_crud(input: proc_macro::TokenStream) -> proc_macro::T
     let derive_debug_to_schema_token_stream = quote::quote!{#[derive(#debug_token_stream, #utoipa_to_schema_token_stream)]};
     let derive_debug_serialize_deserialize_token_stream = quote::quote!{#[derive(#debug_token_stream, #serde_serialize_token_stream, #serde_deserialize_token_stream)]};
     let derive_debug_serialize_deserialize_to_schema_token_stream = quote::quote!{#[derive(#debug_token_stream, #serde_serialize_token_stream, #serde_deserialize_token_stream, #utoipa_to_schema_token_stream)]};
-    let try_upper_camel_case_stringified = proc_macro_helpers::naming_conventions::try_upper_camel_case_stringified();
-    let from_upper_camel_case_stringified = proc_macro_helpers::naming_conventions::from_upper_camel_case_stringified();
     let try_from_upper_camel_case_stringified = proc_macro_helpers::naming_conventions::try_from_upper_camel_case_stringified();
     let from_str_upper_camel_case_stringified = proc_macro_helpers::naming_conventions::from_str_upper_camel_case_stringified();
     let from_str_upper_camel_case_token_stream = {
