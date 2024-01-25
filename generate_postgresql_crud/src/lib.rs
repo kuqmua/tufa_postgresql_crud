@@ -764,7 +764,11 @@ pub fn generate_postgresql_crud(input: proc_macro::TokenStream) -> proc_macro::T
             }
         }
     };
-    let column_select_upper_camel_case_stringified = "ColumnSelect";
+    let column_select_upper_camel_case_stringified = format!(
+        "{}{}",
+        proc_macro_helpers::naming_conventions::column_upper_camel_case_stringified(),
+        proc_macro_helpers::naming_conventions::select_upper_camel_case_stringified()
+    );
     let ident_column_select_upper_camel_case_token_stream = {
         let ident_column_select_upper_camel_case_stringified = format!("{ident}{column_select_upper_camel_case_stringified}");
         ident_column_select_upper_camel_case_stringified.parse::<proc_macro2::TokenStream>()
@@ -1130,9 +1134,12 @@ pub fn generate_postgresql_crud(input: proc_macro::TokenStream) -> proc_macro::T
         }
     };
     // println!("{primary_key_uuid_wrapper_try_from_sqlx_row_token_stream}");
-    let order_upper_camel_case_stringified = "Order";
     // let order_snake_case_stringified = proc_macro_common::naming_conventions::ToSnakeCaseStringified::to_snake_case_stringified(&order_upper_camel_case_stringified);
-    let order_by_upper_camel_case_stringified = format!("{order_upper_camel_case_stringified}By");
+    let order_by_upper_camel_case_stringified = format!(
+        "{}{}",
+        proc_macro_helpers::naming_conventions::order_upper_camel_case_stringified(),
+        proc_macro_helpers::naming_conventions::by_upper_camel_case_stringified()
+    );
     let order_by_snake_case_stringified = proc_macro_common::naming_conventions::ToSnakeCaseStringified::to_snake_case_stringified(&order_by_upper_camel_case_stringified);
     let order_by_upper_camel_case_token_stream = {
         order_by_upper_camel_case_stringified.parse::<proc_macro2::TokenStream>()
