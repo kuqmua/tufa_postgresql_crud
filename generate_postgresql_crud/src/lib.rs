@@ -350,8 +350,8 @@ pub fn generate_postgresql_crud(input: proc_macro::TokenStream) -> proc_macro::T
     let derive_debug_serialize_deserialize_to_schema_token_stream = quote::quote!{#[derive(#debug_token_stream, #serde_serialize_token_stream, #serde_deserialize_token_stream, #utoipa_to_schema_token_stream)]};
     let try_upper_camel_case_stringified = proc_macro_helpers::naming_conventions::try_upper_camel_case_stringified();
     let from_upper_camel_case_stringified = proc_macro_helpers::naming_conventions::from_upper_camel_case_stringified();
-    let try_from_upper_camel_case_stringified = format!("{try_upper_camel_case_stringified}{from_upper_camel_case_stringified}");
-    let from_str_upper_camel_case_stringified = format!("{from_upper_camel_case_stringified}Str");
+    let try_from_upper_camel_case_stringified = proc_macro_helpers::naming_conventions::try_from_upper_camel_case_stringified();
+    let from_str_upper_camel_case_stringified = proc_macro_helpers::naming_conventions::from_str_upper_camel_case_stringified();
     let from_str_upper_camel_case_token_stream = {
         from_str_upper_camel_case_stringified.parse::<proc_macro2::TokenStream>()
             .unwrap_or_else(|_| panic!("{proc_macro_name_upper_camel_case_ident_stringified} {from_str_upper_camel_case_stringified} {}", proc_macro_common::global_variables::hardcode::PARSE_PROC_MACRO2_TOKEN_STREAM_FAILED_MESSAGE))
@@ -367,7 +367,7 @@ pub fn generate_postgresql_crud(input: proc_macro::TokenStream) -> proc_macro::T
     let sqlx_types_type_database_token_stream = quote::quote!{sqlx::types::Type<R::Database>};
     let primary_key_uuid_wrapper_try_from_sqlx_row_name_token_stream = quote::quote!{primary_key_uuid_wrapper_try_from_sqlx_row};
     let crate_server_postgres_uuid_wrapper_token_stream = quote::quote!{crate::server::postgres::uuid_wrapper};
-    let error_named_upper_camel_case_stringified = "ErrorNamed";
+    let error_named_upper_camel_case_stringified = proc_macro_helpers::naming_conventions::error_named_upper_camel_case_stringified();
     let uuid_wrapper_try_from_possible_uuid_wrapper_upper_camel_case_stringified = format!("UuidWrapper{try_from_upper_camel_case_stringified}PossibleUuidWrapper");
     let uuid_wrapper_try_from_possible_uuid_wrapper_upper_camel_case_token_stream = {
         uuid_wrapper_try_from_possible_uuid_wrapper_upper_camel_case_stringified.parse::<proc_macro2::TokenStream>()
