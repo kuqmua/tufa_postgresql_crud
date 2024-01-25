@@ -390,7 +390,10 @@ pub fn generate_postgresql_crud(input: proc_macro::TokenStream) -> proc_macro::T
     let std_vec_vec_crate_server_postgres_uuid_wrapper_uuid_wrapper_token_stream = quote::quote!{std::vec::Vec<#crate_server_postgres_uuid_wrapper_uuid_wrapper_token_stream>};
     let crate_server_postgres_uuid_wrapper_possible_uuid_wrapper_token_stream = quote::quote!{#crate_server_postgres_uuid_wrapper_token_stream::PossibleUuidWrapper};
     let std_str_from_str_token_stream = quote::quote!{std::str::#from_str_upper_camel_case_token_stream};
-    let struct_options_ident_stringified = format!("{ident}Options");
+    let struct_options_ident_stringified = format!(
+        "{ident}{}",
+        proc_macro_helpers::naming_conventions::options_upper_camel_case_stringified()
+    );
     let struct_options_ident_token_stream = {
         struct_options_ident_stringified.parse::<proc_macro2::TokenStream>()
         .unwrap_or_else(|_| panic!("{proc_macro_name_upper_camel_case_ident_stringified} {struct_options_ident_stringified} {}", proc_macro_common::global_variables::hardcode::PARSE_PROC_MACRO2_TOKEN_STREAM_FAILED_MESSAGE))
@@ -499,7 +502,7 @@ pub fn generate_postgresql_crud(input: proc_macro::TokenStream) -> proc_macro::T
             })
             .collect::<std::vec::Vec<proc_macro2::TokenStream>>()
     };
-    let code_occurence_upper_camel_case_stringified = format!("Code{}", proc_macro_helpers::naming_conventions::occurence_upper_camel_case_stringified());//todo reuse in other macros
+    let code_occurence_upper_camel_case_stringified = proc_macro_helpers::naming_conventions::code_occurence_upper_camel_case_stringified();
     let code_occurence_upper_camel_case_token_stream = code_occurence_upper_camel_case_stringified.parse::<proc_macro2::TokenStream>()
         .unwrap_or_else(|_| panic!("{proc_macro_name_upper_camel_case_ident_stringified} {code_occurence_upper_camel_case_stringified} {}", proc_macro_common::global_variables::hardcode::PARSE_PROC_MACRO2_TOKEN_STREAM_FAILED_MESSAGE));
     let code_occurence_snake_case_stringified = proc_macro_common::naming_conventions::ToSnakeCaseStringified::to_snake_case_stringified(&code_occurence_upper_camel_case_stringified);
