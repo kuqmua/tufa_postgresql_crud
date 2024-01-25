@@ -553,8 +553,8 @@ pub fn generate_postgresql_crud(input: proc_macro::TokenStream) -> proc_macro::T
                     ident_try_from_ident_options_error_named_upper_camel_case_stringified.parse::<proc_macro2::TokenStream>()
                     .unwrap_or_else(|_| panic!("{proc_macro_name_upper_camel_case_ident_stringified} {ident_try_from_ident_options_error_named_upper_camel_case_stringified} {}", proc_macro_common::global_variables::hardcode::PARSE_PROC_MACRO2_TOKEN_STREAM_FAILED_MESSAGE))
                 };
-                let is_none_upper_camel_case_stringified = "IsNone";
-                let postfix_is_none_snake_case_stringified = "_is_none";
+                let is_none_upper_camel_case_stringified = proc_macro_helpers::naming_conventions::is_none_upper_camel_case_stringified();
+                let postfix_is_none_snake_case_stringified = format!("_{}", proc_macro_helpers::naming_conventions::is_none_snake_case_stringified());
                 let ident_try_from_ident_options_error_named_token_stream = {
                     let uuid_wrapper_try_from_possible_uuid_wrapper_primary_key_variant_token_stream = match variant_columns.iter().find(|element| {
                         element.ident
