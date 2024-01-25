@@ -211,7 +211,7 @@ pub fn generate_postgresql_crud(input: proc_macro::TokenStream) -> proc_macro::T
     //     ident_response_variants_stringified.parse::<proc_macro2::TokenStream>()
     //     .unwrap_or_else(|_| panic!("{proc_macro_name_upper_camel_case_ident_stringified} {ident_response_variants_stringified} {}", proc_macro_common::global_variables::hardcode::PARSE_PROC_MACRO2_TOKEN_STREAM_FAILED_MESSAGE))
     // };
-    let with_serialize_deserialize_upper_camel_case_stringified = "WithSerializeDeserialize";
+    let with_serialize_deserialize_upper_camel_case_stringified = proc_macro_helpers::naming_conventions::with_serialize_deserialize_upper_camel_case_stringified();
     let table_name_stringified = pluralizer::pluralize(&ident_snake_case_stringified, 2, false);
     let table_name_quotes_token_stream = proc_macro_common::generate_quotes::generate_quotes_token_stream(
         &table_name_stringified,
