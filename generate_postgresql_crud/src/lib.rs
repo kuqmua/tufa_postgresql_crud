@@ -712,7 +712,10 @@ pub fn generate_postgresql_crud(input: proc_macro::TokenStream) -> proc_macro::T
             .collect::<std::vec::Vec<proc_macro2::TokenStream>>()
     };
     let ident_column_upper_camel_case_token_stream = {
-        let ident_column_upper_camel_case_stringified = format!("{ident}Column");
+        let ident_column_upper_camel_case_stringified = format!(
+            "{ident}{}",
+            proc_macro_helpers::naming_conventions::column_upper_camel_case_stringified()
+        );
         ident_column_upper_camel_case_stringified.parse::<proc_macro2::TokenStream>()
         .unwrap_or_else(|_| panic!("{proc_macro_name_upper_camel_case_ident_stringified} {ident_column_upper_camel_case_stringified} {}", proc_macro_common::global_variables::hardcode::PARSE_PROC_MACRO2_TOKEN_STREAM_FAILED_MESSAGE))
     };
