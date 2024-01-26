@@ -5,7 +5,7 @@ mod from_log_and_return_error;
 mod generate_postgres_transaction;
 mod type_variants_from_request_response_generator;
 mod extract_syn_variants_from_proc_macro_attribute;
-//todo eprintln! first then compile_time! 
+
 // trait Something {
 //     fn something();
 // }
@@ -37,7 +37,6 @@ mod extract_syn_variants_from_proc_macro_attribute;
 // PgLTree	LTREE
 // PgLQuery	LQUERY
 
-// todo check on not generated name and color fields
 //todo generate for each create update delete body length checked and for path query headers too
 //todo how to write filter logic for sqlx rust postgresql types?
 //todo decide where to do error log (maybe add in some places)
