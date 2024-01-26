@@ -28,7 +28,7 @@ mod extract_syn_variants_from_proc_macro_attribute;
 // i64	BIGINT, BIGSERIAL, INT8
 // f32	REAL, FLOAT4
 // f64	DOUBLE PRECISION, FLOAT8
-// &str, String	VARCHAR, CHAR(N), TEXT, NAME
+// &str, std::string::String	VARCHAR, CHAR(N), TEXT, NAME
 // &[u8], std::vec::Vec<u8>	BYTEA
 // ()	VOID
 // PgInterval	INTERVAL
@@ -1187,7 +1187,7 @@ pub fn generate_postgresql_crud(input: proc_macro::TokenStream) -> proc_macro::T
             {
                 let string_deserialized = {
                     use #serde_deserialize_token_stream;
-                    String::deserialize(deserializer)?
+                    std::string::String::deserialize(deserializer)?
                 };
                 let split_inner_url_parameters_symbol = ',';
                 let default_message = format!(#ivalid_ident_order_by_handle_token_stream);
