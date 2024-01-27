@@ -18,7 +18,7 @@ pluralizer = {version = "=0.4.0"}
 proc_macro_assistants = {path = "../../proc_macros/proc_macro_assistants"}
 proc_macro_common = {path = "../../proc_macros/proc_macro_common"}
 proc_macro_helpers = {path = "../../proc_macros/proc_macro_helpers"}
-enum_extension = {path = "../../proc_macros/enum_extension"}
+enum_extension = {path = "../../enum_extension"}
 
 [lints]
 workspace = true
